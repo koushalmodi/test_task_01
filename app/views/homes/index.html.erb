@@ -1,0 +1,6 @@
+<% if user_signed_in? %>
+  <%= button_to "Sign_out", destroy_user_session_path, class: "dropdown-item", method: :delete %>
+<% else %>
+  <%= button_to "Sign in", new_user_session_path,  class: "btn btn-info" %>
+<% end %> 
+
