@@ -1,0 +1,50 @@
+<style>
+.navbar{
+  display: flex;
+  width: 100%;
+  height: 86px;
+  background-color: #696969;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navbar img {
+  height: 50px;
+  width: 175px;
+  margin-left: 30px;
+  position: relative;
+}
+
+.styled {
+  margin-right: 30px;
+  position: relative;
+  border: 0;
+  line-height: 2.5;
+  padding: 0 20px;
+  font-size: 1rem;
+  text-align: center;
+  color: #fff;
+  text-shadow: 1px 1px 1px #000;
+  border-radius: 10px;
+  background-color: rgba(220, 0, 0, 1);
+  background-image: linear-gradient(
+    to top left,
+    rgba(0, 0, 0, 0.2),
+    rgba(0, 0, 0, 0.2) 30%,
+    rgba(0, 0, 0, 0)
+  );
+  box-shadow:
+    inset 2px 2px 3px rgba(255, 255, 255, 0.6),
+    inset -2px -2px 3px rgba(0, 0, 0, 0.6);
+}
+
+.styled:hover {
+  background-color: rgb(43, 36, 36);
+}
+
+</style>
+
+<div class="navbar">
+  <img src="https://cdn.planetspark.in/assets/planetspark-logo-e99f454844f44a8a32b048ee27c8c02e2e3c8999a970497ac9b8cbce1ac603e8.png" />
+  <%= button_to "Sign out", destroy_user_session_path, class: "styled", method: :delete %>
+</div>

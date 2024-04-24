@@ -4,4 +4,6 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "homes#index" 
+  resources :tweets
+  delete '/tweets/:id',    to: 'tweet#destroy',      as: 'destroy_tweet'
 end

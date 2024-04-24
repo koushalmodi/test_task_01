@@ -1,5 +1,53 @@
+<style>
+  * {
+  margin: 0px;
+  padding: 0px;
+}
+  .cantainer_main{
+    background-color: rgba(244, 244, 244, 1);
+    width: 50%;
+    box-shadow: inset;
+  }
+  body{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .tweet_containt{
+    font-family: sans-serif;
+    font-size: medium;
+    font-weight: 200;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: solid #ffff;
+    border-radius: 10px;
+  }
+  .post_img{
+    border-radius: 20px;
+  }
+  img{
+    border-radius: inherit;
+    border: aliceblue;
+  }
+
+</style>
 <% if user_signed_in? %>
-  <%= button_to "Sign_out", destroy_user_session_path, class: "dropdown-item", method: :delete %>
+  <%= render 'navbar'%>
+  <%= render 'tweets/form'%>
+  <% @posts=(Tweet.all.order(created_at: :desc))%>
+    <div class="cantainer_main">
+      <% @posts.each do |post| %>
+      <div class="tweet_containt">
+        <p><%= post.description %><p><br>
+          <% if post.post.attached?%>
+            <div class="post_img"><%=image_tag post.post, :size => "600x400" %></div>
+          <% end %>
+            <%= button_to "Delete Tweet", destroy_tweet_url(post), method: "delete"%>
+      </div>
+      <% end %>
+    </div>
 <% else %>
   <%= button_to "Sign in", new_user_session_path,  class: "btn btn-info" %>
 <% end %> 
